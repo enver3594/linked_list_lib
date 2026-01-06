@@ -11,7 +11,7 @@ int main(){
         printf("Enter element to add in the end\n");
         int a;
         scanf("%d", &a);
-        add_to_back(&head, a);
+        push_back(&head, &a, sizeof(a));
         output(head);
     }
 }
