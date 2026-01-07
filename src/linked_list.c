@@ -2,44 +2,39 @@
 #include <stdlib.h>
 #include <string.h> // for memcpy
 
-//macros for checking memory allocation
-//added do-while for proper macros expansion
-#define MALLOC_CHECK(ptr, return_value) \
-    do { \
-        if((ptr) == NULL) { \
-            printf("Error in memory allocation at %s:%d", __FILE__, __LINE__); \
-            return return_value; \
-        }\
-    }while(0)
 
 //macros for checking data allocarion
-#define DATA_CHECK(ptr, return_value) \
+//added do-while for proper macros expansion
+#define DATA_CHECK_VOID(ptr) \
     do { \
         if((ptr) == NULL) { \
             printf("Error: NULL data pointer at %s:%d", __FILE__, __LINE__); \
-            return return_value; \
+            return; \
         }\
     }while(0)
 
-#define DATA_CHECK_WITH_CLEANUP(ptr, free) \
-    do { \
-        if ((ptr) == NULL) { \
-            printf("Error: failed to allocate memory for data\n"); \
-            free; \
-            return NULL; \
-        } \
-    }while(0)
-
-
 Node* create_node(const void* data, size_t data_size) {
-    DATA_CHECK(data, NULL);
+    if (data == NULL)
+    {
+        printf("Error: NULL data pointer\n");
+    }
 
     Node* new_node = (Node*)malloc(sizeof(Node));
-    MALLOC_CHECK(new_node, NULL);
+    if(new_node == NULL)
+    {
+        printf("Error in memory allocation\n");
+        return NULL;
+    }
 
 
     new_node->data = malloc(data_size);
-    DATA_CHECK_WITH_CLEANUP(new_node->data, free(new_node));
+    if (new_node->data == NULL)
+    {
+        printf("Error in memory allocation");
+        free(new_node);
+        return NULL;
+    }
+    
 
     memcpy(new_node->data, data, data_size);
     new_node->data_size = data_size;
@@ -51,13 +46,16 @@ bool is_empty(Node *head){
     return head == NULL;
 }
 
-//Need to fix output later, because 
-void output(Node *head){
+void print_if_empty(Node *head){
     if (is_empty(head))
     {
-        printf("List is empty\n\n");
-        return;
+        printf("List is empty\n");
     }
+}
+
+//Need to fix output later, because 
+void output(Node *head){
+    print_if_empty(head);
     Node *current = head;
     while (current != NULL)
     {
@@ -69,8 +67,8 @@ void output(Node *head){
 
 void push_back(Node** head, const void* data, size_t data_size){
     //add to the end of a list 
-    DATA_CHECK(data, );
-    DATA_CHECK(head, );
+    DATA_CHECK_VOID(head);
+    DATA_CHECK_VOID(data);
 
     Node *new = create_node(data, data_size);
     
