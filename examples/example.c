@@ -9,9 +9,10 @@ int main(){
     Node* head = NULL;
     for(;;){
         printf("Enter element to add in the end\n");
-        int a;
-        scanf("%d", &a);
+        float a;
+        scanf("%lf", &a);
+        printf("%g\n", a);
         push_back(&head, &a, sizeof(a));
-        output(head);
+        output(head, print_double);
     }
 }

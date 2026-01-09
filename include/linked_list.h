@@ -16,7 +16,13 @@ bool is_empty(Node *head);
 
 void deallocation(Node **head);
 
-void output(Node* head);
+void output(Node* head, void (*print_funk)(const void*));
+void print_int(const void* data);
+void print_float(const void* data);
+void print_double(const void* data);
+void print_char(const void* data);
+void print_string(const void* data);
+
 
 void create_random_element(Node **head);
 

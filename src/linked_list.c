@@ -35,7 +35,6 @@ Node* create_node(const void* data, size_t data_size) {
         return NULL;
     }
     
-
     memcpy(new_node->data, data, data_size);
     new_node->data_size = data_size;
     new_node->next = NULL;
@@ -53,17 +52,54 @@ void print_if_empty(Node *head){
     }
 }
 
-//Need to fix output later, because 
-void output(Node *head){
+//This function works only for int type, output is incorrect 
+void output(Node *head, void (*print_funk)(const void*)){
     print_if_empty(head);
+
+    DATA_CHECK_VOID(print_funk);
+    
     Node *current = head;
     while (current != NULL)
     {
-        printf("%d -> ", current->data);
+        print_funk(current->data);
+
+        if (current->next != NULL)
+        {
+            printf(" -> ");
+        }
         current = current->next;
     }
-    printf("\n");
+    printf(" -> NULL\n");
 }
+
+//additional functions for output
+void print_int(const void* data){
+    DATA_CHECK_VOID(data);
+    //converting from an address to an integer variable
+    int value = *(const int*)data;
+    printf("%d", value);
+}
+void print_float(const void* data){
+    DATA_CHECK_VOID(data);
+    float value = *(const float*)data;
+    printf("%g", value);
+}
+void print_double(const void* data){
+    DATA_CHECK_VOID(data);
+    double value = *(const double*)data;
+    printf("%g", value);
+}
+void print_char(const void* data){
+    DATA_CHECK_VOID(data);
+    char value = *(const char*)data;
+    printf("%c", value);
+}
+void print_string(const void* data){
+    DATA_CHECK_VOID(data);
+    const char* str = (const char*)data;
+    printf("\"%s\"", str);
+}
+
 
 void push_back(Node** head, const void* data, size_t data_size){
     //add to the end of a list 
