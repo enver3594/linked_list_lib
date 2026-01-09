@@ -81,6 +81,11 @@ void print_int(const void* data){
     int value = *(const int*)data;
     printf("%d", value);
 }
+void print_size_t(const void* data){
+    DATA_CHECK_VOID(data);
+    size_t value = *(const size_t*)data;
+    printf("%zu", value);
+}
 void print_float(const void* data){
     DATA_CHECK_VOID(data);
     float value = *(const float*)data;
@@ -123,7 +128,7 @@ void push_back(Node** head, const void* data, size_t data_size){
 
     Node *new_node = create_node(data, data_size);
     if (create_node == NULL){return;}
-    
+
     if (*head == NULL)
     {
         *head = new_node;

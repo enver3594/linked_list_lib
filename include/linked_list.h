@@ -18,6 +18,7 @@ void deallocation(Node **head);
 
 void output(Node* head, void (*print_funk)(const void*));
 void print_int(const void* data);
+void print_size_t(const void* data);
 void print_float(const void* data);
 void print_double(const void* data);
 void print_char(const void* data);
