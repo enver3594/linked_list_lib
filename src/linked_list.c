@@ -50,6 +50,7 @@ void print_if_empty(Node *head){
     {
         printf("List is empty\n");
     }
+    return;
 }
 
 //This function works only for int type, output is incorrect 
@@ -98,6 +99,20 @@ void print_string(const void* data){
     DATA_CHECK_VOID(data);
     const char* str = (const char*)data;
     printf("\"%s\"", str);
+}
+
+
+void deallocation(Node** head){
+    print_if_empty(*head);
+    
+    Node *current = *head;
+    while(current != NULL){
+        Node* temp = current;
+        current = current->next;
+
+        free(temp);
+    }
+    *head = NULL;
 }
 
 
