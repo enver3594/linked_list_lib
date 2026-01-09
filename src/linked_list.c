@@ -17,6 +17,7 @@ Node* create_node(const void* data, size_t data_size) {
     if (data == NULL)
     {
         printf("Error: NULL data pointer\n");
+        return NULL;
     }
 
     Node* new_node = (Node*)malloc(sizeof(Node));
@@ -104,7 +105,7 @@ void print_string(const void* data){
 
 void deallocation(Node** head){
     print_if_empty(*head);
-    
+
     Node *current = *head;
     while(current != NULL){
         Node* temp = current;
@@ -115,17 +116,17 @@ void deallocation(Node** head){
     *head = NULL;
 }
 
-
 void push_back(Node** head, const void* data, size_t data_size){
     //add to the end of a list 
     DATA_CHECK_VOID(head);
     DATA_CHECK_VOID(data);
 
-    Node *new = create_node(data, data_size);
+    Node *new_node = create_node(data, data_size);
+    if (create_node == NULL){return;}
     
     if (*head == NULL)
     {
-        *head = new;
+        *head = new_node;
         return;
     }
 
@@ -134,7 +135,18 @@ void push_back(Node** head, const void* data, size_t data_size){
     {
         current = current->next;
     }
-    current->next = new;
+    current->next = new_node;
 }
 
+void push_front(Node** head, const void* data, size_t data_size){
+    // add to the begining of a list 
+    DATA_CHECK_VOID(head);
+    DATA_CHECK_VOID(data);
 
+    Node* new_node = create_node(data, data_size);
+    if (create_node == NULL){return;}
+    
+
+    new_node->next = *head;
+    *head = new_node;
+}
