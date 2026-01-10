@@ -11,13 +11,13 @@ int main(){
         printf("Enter element to add in the end\n");
         int a;
         scanf("%d", &a);
-        push_back(&head, &a, sizeof(a));
-        output(head, print_int);
+        ll_push_back(&head, &a, sizeof(a));
+        ll_output(head, ll_print_int);
 
         printf("Enter element to add in the beginning\n");
         int b;
         scanf("%d", &b);
-        push_front(&head, &b, sizeof(b));
-        output(head, print_int);
+        ll_push_front(&head, &b, sizeof(b));
+        ll_output(head, ll_print_int);
     }
 }

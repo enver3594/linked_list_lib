@@ -13,7 +13,7 @@
         }\
     }while(0)
 
-Node* create_node(const void* data, size_t data_size) {
+Node* ll_create_node(const void* data, size_t data_size) {
     if (data == NULL)
     {
         printf("Error: NULL data pointer\n");
@@ -42,12 +42,12 @@ Node* create_node(const void* data, size_t data_size) {
     return new_node;
 }
 
-bool is_empty(Node *head){
+bool ll_is_empty(Node *head){
     return head == NULL;
 }
 
-void print_if_empty(Node *head){
-    if (is_empty(head))
+void ll_print_if_empty(Node *head){
+    if (ll_is_empty(head))
     {
         printf("List is empty\n");
     }
@@ -55,8 +55,8 @@ void print_if_empty(Node *head){
 }
 
 //This function works only for int type, output is incorrect 
-void output(Node *head, void (*print_funk)(const void*)){
-    print_if_empty(head);
+void ll_output(Node *head, void (*print_funk)(const void*)){
+    ll_print_if_empty(head);
 
     DATA_CHECK_VOID(print_funk);
     
@@ -75,41 +75,41 @@ void output(Node *head, void (*print_funk)(const void*)){
 }
 
 //additional functions for output
-void print_int(const void* data){
+void ll_print_int(const void* data){
     DATA_CHECK_VOID(data);
     //converting from an address to an integer variable
     int value = *(const int*)data;
     printf("%d", value);
 }
-void print_size_t(const void* data){
+void ll_print_size_t(const void* data){
     DATA_CHECK_VOID(data);
     size_t value = *(const size_t*)data;
     printf("%zu", value);
 }
-void print_float(const void* data){
+void ll_print_float(const void* data){
     DATA_CHECK_VOID(data);
     float value = *(const float*)data;
     printf("%g", value);
 }
-void print_double(const void* data){
+void ll_print_double(const void* data){
     DATA_CHECK_VOID(data);
     double value = *(const double*)data;
     printf("%g", value);
 }
-void print_char(const void* data){
+void ll_print_char(const void* data){
     DATA_CHECK_VOID(data);
     char value = *(const char*)data;
     printf("%c", value);
 }
-void print_string(const void* data){
+void ll_print_string(const void* data){
     DATA_CHECK_VOID(data);
     const char* str = (const char*)data;
     printf("\"%s\"", str);
 }
 
 
-void deallocation(Node** head){
-    print_if_empty(*head);
+void ll_destroy(Node** head){
+    ll_print_if_empty(*head);
 
     Node *current = *head;
     while(current != NULL){
@@ -121,13 +121,13 @@ void deallocation(Node** head){
     *head = NULL;
 }
 
-void push_back(Node** head, const void* data, size_t data_size){
+void ll_push_back(Node** head, const void* data, size_t data_size){
     //add to the end of a list 
     DATA_CHECK_VOID(head);
     DATA_CHECK_VOID(data);
 
-    Node *new_node = create_node(data, data_size);
-    if (create_node == NULL){return;}
+    Node *new_node = ll_create_node(data, data_size);
+    if (ll_create_node == NULL){return;}
 
     if (*head == NULL)
     {
@@ -143,13 +143,13 @@ void push_back(Node** head, const void* data, size_t data_size){
     current->next = new_node;
 }
 
-void push_front(Node** head, const void* data, size_t data_size){
+void ll_push_front(Node** head, const void* data, size_t data_size){
     // add to the begining of a list 
     DATA_CHECK_VOID(head);
     DATA_CHECK_VOID(data);
 
-    Node* new_node = create_node(data, data_size);
-    if (create_node == NULL){return;}
+    Node* new_node = ll_create_node(data, data_size);
+    if (ll_create_node == NULL){return;}
     
 
     new_node->next = *head;
