@@ -8,6 +8,8 @@ gcc examples/example.c src/linked_list.c -Iinclude -o example
 int main(){
     Node* head = NULL;
     for(;;){
+        ///////////////////////////////// remove print from library functions 
+
         printf("Enter element to add in the end\n");
         int a;
         scanf("%d", &a);
@@ -26,6 +28,20 @@ int main(){
         printf("Enter data\n");
         scanf("%d", &data);
         ll_insert_after_position(&head, &data, sizeof(data), position);
+        ll_output(head, ll_print_int);
+
+        int position2, data2;
+        printf("Enter position2\n");
+        scanf("%d", &position2);
+        printf("Enter data\n");
+        scanf("%d", &data2);
+        ll_insert_before_position(&head, &data2, sizeof(data2), position2);
+        ll_output(head, ll_print_int);
+
+        int pos = 0;
+        printf("remove element, enter position\n");
+        scanf("%d", &pos);
+        ll_remove(&head, pos);
         ll_output(head, ll_print_int);
     }
 }

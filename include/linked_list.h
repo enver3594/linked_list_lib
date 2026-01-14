@@ -36,8 +36,10 @@ void ll_insert_after_value(Node **head, const void* value, const void* data, siz
 
 void ll_insert_after_position(Node **head, const void* data, size_t data_size, size_t position);
 
-void ll_remove(Node **head, int data);
-// delete node at value
+void ll_insert_before_position(Node** head, const void* data, size_t data_size, size_t position);
+
+void ll_remove(Node **head, size_t position);
+// delete node at position
 
 Node* ll_find(Node *l, int x);
 

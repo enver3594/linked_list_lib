@@ -210,3 +210,74 @@ void ll_insert_after_position(Node** head, const void* data, size_t data_size, s
     }
     printf("Error, incorrect position input\n");
 }
+
+void ll_insert_before_position(Node** head, const void* data, size_t data_size, size_t position){
+    DATA_CHECK_VOID(head);
+    DATA_CHECK_VOID(data);
+
+    if (position == 0)
+    {
+        Node* new_node = ll_create_node(data, data_size);
+        if (new_node == NULL){return;}
+
+        new_node->next = *head;
+        *head = new_node;
+        return;
+    }
+    Node* current = *head;
+    Node* previous = NULL;
+
+    size_t count = 0;
+
+    while (current != NULL)
+    {
+        if (count == position)
+        {
+            Node* new_node = ll_create_node(data, data_size);
+            if (new_node == NULL){return;}
+
+            previous->next = new_node;
+            new_node->next = current;
+            return;
+        }
+        
+        count += 1;   
+        previous = current;
+        current = current->next;
+    }
+    printf("Error, incorrect position input\n");
+}
+
+void ll_remove(Node** head, size_t position){
+    DATA_CHECK_VOID(head);
+
+    if (position == 0)
+    {
+        Node* remove = *head;
+        *head = (*head)->next;
+        free(remove);
+        remove = NULL;
+        return;
+    }
+
+    Node* current = *head;
+    Node* previous = NULL;
+
+    size_t count = 0;
+
+    while (current != NULL)
+    {
+        if (count == position)
+        {
+            previous->next = current->next;
+            current->next = NULL;
+            free(current);
+        }
+        
+        previous = current;
+        current = current->next;
+        count += 1;
+    }
+    return 1;
+    // incorrect position input;
+}
