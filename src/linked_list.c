@@ -54,7 +54,6 @@ void ll_print_if_empty(Node *head){
     return;
 }
 
-//This function works only for int type, output is incorrect 
 void ll_output(Node *head, void (*print_funk)(const void*)){
     ll_print_if_empty(head);
 
@@ -127,7 +126,7 @@ void ll_push_back(Node** head, const void* data, size_t data_size){
     DATA_CHECK_VOID(data);
 
     Node *new_node = ll_create_node(data, data_size);
-    if (ll_create_node == NULL){return;}
+    if (new_node == NULL){return;}
 
     if (*head == NULL)
     {
@@ -149,9 +148,65 @@ void ll_push_front(Node** head, const void* data, size_t data_size){
     DATA_CHECK_VOID(data);
 
     Node* new_node = ll_create_node(data, data_size);
-    if (ll_create_node == NULL){return;}
-    
+    if (new_node == NULL){return;}
 
     new_node->next = *head;
     *head = new_node;
+}
+
+/*
+void ll_insert_after_value(Node** head, const void* value, const void* data, size_t data_size){
+    //insert after a value
+    DATA_CHECK_VOID(head);
+    DATA_CHECK_VOID(value);
+    DATA_CHECK_VOID(data);
+
+    Node* current = *head;
+
+    while (current != NULL)
+    {
+        if (current->data == value)
+        {
+        }
+        
+        current = current->next;
+    }
+    
+}
+*/
+
+void ll_insert_after_position(Node** head, const void* data, size_t data_size, size_t position){
+    DATA_CHECK_VOID(head);
+    DATA_CHECK_VOID(data);
+
+    if (position == 0 && *head == NULL)
+    {
+        Node* new_node = ll_create_node(data, data_size);
+        if (new_node == NULL){return;}
+
+        new_node->next = *head;
+        *head = new_node;
+        return;
+    }
+    
+    
+    Node* current = *head;
+
+    size_t count = 0;
+
+    while (current != NULL)
+    {
+        if (count == position)
+        {
+            Node* new_node = ll_create_node(data, data_size);
+            if (new_node == NULL){return;}
+
+            new_node->next = current->next;
+            current->next = new_node;
+            return;
+        }
+        count += 1;
+        current = current->next;
+    }
+    printf("Error, incorrect position input\n");
 }

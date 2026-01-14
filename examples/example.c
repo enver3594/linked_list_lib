@@ -19,5 +19,13 @@ int main(){
         scanf("%d", &b);
         ll_push_front(&head, &b, sizeof(b));
         ll_output(head, ll_print_int);
+
+        int position, data;
+        printf("Enter position\n");
+        scanf("%d", &position);
+        printf("Enter data\n");
+        scanf("%d", &data);
+        ll_insert_after_position(&head, &data, sizeof(data), position);
+        ll_output(head, ll_print_int);
     }
 }

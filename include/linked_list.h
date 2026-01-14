@@ -31,8 +31,10 @@ void ll_push_back(Node **head, const void* data, size_t data_size);
 void ll_push_front(Node **head, const void* data, size_t data_size);
 //add to front
 
-void ll_insert_after(Node **head, int newData, int data);
+void ll_insert_after_value(Node **head, const void* value, const void* data, size_t data_size);
 //insert after a value
+
+void ll_insert_after_position(Node **head, const void* data, size_t data_size, size_t position);
 
 void ll_remove(Node **head, int data);
 // delete node at value
@@ -50,7 +52,7 @@ Node* ll_get_last();
 
 Node* ll_get_at();
 
-void* ll_get_data_at(Node* head, int index);
+void* ll_get_data_at(Node* head, size_t index);
 
 bool ll_contains();
 //Is there an element?(true/false)
