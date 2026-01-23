@@ -281,3 +281,48 @@ void ll_remove(Node** head, size_t position){
     return 1;
     // incorrect position input;
 }
+
+Node* ll_find(Node* head, size_t index){
+
+    Node* current = head;
+    size_t count = 0;
+
+    while (current != NULL)
+    {
+        if (count == index)
+        {
+            return current;
+        }
+        
+        count += 1;
+        current = current->next;
+    }
+    return NULL;
+}
+
+size_t ll_length(Node* head){
+    Node* current = head;
+    size_t length = 0;
+
+    while (current != NULL)
+    {
+        length += 1;
+        current = current->next;
+    }
+    return length;
+}
+/* Also added recurtion realization, but i don't wanna use it 
+because of risks of stack overflow
+size_t length_recurtion(Node* head){
+    if (head == NULL)
+    {
+        return 0; 
+    }
+    return 1 + length_reversed(head->next);
+}
+*/
+
+Node* ll_get_first(Node* head){
+    return head;
+}
+

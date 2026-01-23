@@ -41,13 +41,14 @@ void ll_insert_before_position(Node** head, const void* data, size_t data_size, 
 void ll_remove(Node **head, size_t position);
 // delete node at position
 
-Node* ll_find(Node *l, int x);
+Node* ll_find(Node *head, size_t index);
 
 
 //Informational
-size_t ll_length(Node *l);
+size_t ll_length(Node *head);
+//size_t ll_length_recurtion(Node* head); 
 
-Node* ll_get_first();
+Node* ll_get_first(Node *head);
 //get first element
 
 Node* ll_get_last();

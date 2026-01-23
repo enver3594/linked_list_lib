@@ -43,5 +43,14 @@ int main(){
         scanf("%d", &pos);
         ll_remove(&head, pos);
         ll_output(head, ll_print_int);
+
+        /*
+        printf("find node at index\n");
+        int index = 0;
+        scanf("%d", &index);
+        //////////////////////////////////////// FFFFFFIIIIIIIIXXXXX
+        */
+
+        
     }
 }
