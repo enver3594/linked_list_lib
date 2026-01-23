@@ -326,3 +326,27 @@ Node* ll_get_first(Node* head){
     return head;
 }
 
+Node* ll_get_last(Node* head){
+    if (head == NULL)
+    {
+        return head;
+    }
+    Node* current = head;
+    while (current->next != NULL)
+    {
+        current = current->next;
+    }
+    return current;
+}
+
+Node* ll_get_at(Node *head, size_t index){
+    size_t count = 0;
+
+    Node* current = head;
+    while (current != NULL && index > count)
+    {
+        current = current->next;
+        count += 1;
+    }
+    return current;
+}

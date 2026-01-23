@@ -51,9 +51,9 @@ size_t ll_length(Node *head);
 Node* ll_get_first(Node *head);
 //get first element
 
-Node* ll_get_last();
+Node* ll_get_last(Node *head);
 
-Node* ll_get_at();
+Node* ll_get_at(Node* head, size_t index);
 
 void* ll_get_data_at(Node* head, size_t index);
 
