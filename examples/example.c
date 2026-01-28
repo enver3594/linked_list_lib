@@ -58,5 +58,12 @@ int main(){
         printf("copy list\n");
         Node* copy = ll_copy(head);
         ll_output(copy, ll_print_int);
+
+        printf("pop_front\n");
+        ll_pop_front(&head);
+        printf("pop_back\n");
+        ll_pop_back(&head);
+        ll_output(head, ll_print_int);
+
     }
 }

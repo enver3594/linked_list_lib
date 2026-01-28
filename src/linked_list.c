@@ -352,6 +352,7 @@ Node* ll_get_at(Node *head, size_t index){
 }
 
 void ll_reverse(Node **head){
+    DATA_CHECK_VOID(head);
     Node* previous = NULL;
     Node* current = *head;
 
@@ -400,3 +401,36 @@ Node* ll_copy(Node *head){
     }
     return new_head;
 }
+
+void ll_pop_front(Node **head){
+    DATA_CHECK_VOID(head);
+    if (*head == NULL){return;} //check if List is empty 
+    
+    Node* delete = *head;
+    *head = (*head)->next;
+    free(delete);
+}
+//delete first element
+
+void ll_pop_back(Node **head){
+    DATA_CHECK_VOID(head);
+    if (*head == NULL){return;}
+    
+    if ((*head)->next == NULL) 
+    {
+        free(*head);
+        return;
+        //check if one element
+    }
+
+    Node* current = *head;
+    Node* previous = NULL;
+    while (current->next != NULL)
+    {
+        previous = current;
+        current = current->next;
+    }
+    previous->next = NULL;
+    free(current);
+}
+// delete last element 

@@ -72,10 +72,10 @@ Node* ll_merge();
 
 
 //Special operations
-void ll_pop_front();
+void ll_pop_front(Node **head);
 //delete first element
 
-void ll_pop_back();
+void ll_pop_back(Node **head);
 // delete last element 
 
 void ll_remove_at();
