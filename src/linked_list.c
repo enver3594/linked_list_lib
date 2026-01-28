@@ -278,7 +278,7 @@ void ll_remove(Node** head, size_t position){
         current = current->next;
         count += 1;
     }
-    return 1;
+    return;
     // incorrect position input;
 }
 
@@ -349,4 +349,54 @@ Node* ll_get_at(Node *head, size_t index){
         count += 1;
     }
     return current;
+}
+
+void ll_reverse(Node **head){
+    Node* previous = NULL;
+    Node* current = *head;
+
+    while (current != NULL)
+    {
+        Node* next = current->next;
+        current->next = previous;
+        previous = current;
+        current = next;
+    }
+    *head = previous;
+}
+
+Node* ll_copy(Node *head){
+    if (head == NULL){return NULL;}
+
+    Node* new_head = (Node*)malloc(sizeof(Node));
+    if(new_head == NULL)
+    {
+        printf("Error in memory allocation\n");
+        return NULL;
+    }
+    new_head->data = head->data;
+    new_head->data_size = head->data_size;
+    new_head->next = NULL;
+    
+    Node* current = head->next;
+    Node* copy_head = new_head;
+
+    while (current != NULL)
+    {
+        Node* new_node = (Node*)malloc(sizeof(Node));
+        if(new_head == NULL)
+        {
+            printf("Error in memory allocation\n");
+            return NULL;
+        }
+        new_node->data = current->data;
+        new_node->data_size = current->data_size;
+        new_node->next = NULL;
+
+        copy_head->next = new_node;
+
+        copy_head = copy_head->next;
+        current = current->next;
+    }
+    return new_head;
 }

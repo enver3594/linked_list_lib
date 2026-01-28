@@ -63,9 +63,9 @@ bool ll_contains();
 
 
 //Advanced operations
-void ll_reverse();
+void ll_reverse(Node **head);
 
-Node* ll_copy();
+Node* ll_copy(Node *head);
 
 Node* ll_merge();
 //merge two sorted lists

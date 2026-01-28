@@ -51,6 +51,12 @@ int main(){
         //////////////////////////////////////// FFFFFFIIIIIIIIXXXXX
         */
 
-        
+        printf("reverse\n");
+        ll_reverse(&head);
+        ll_output(head, ll_print_int);
+
+        printf("copy list\n");
+        Node* copy = ll_copy(head);
+        ll_output(copy, ll_print_int);
     }
 }
